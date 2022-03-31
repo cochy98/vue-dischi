@@ -1,8 +1,9 @@
 <template>
   <!-- Visualizzo al'interno della mia app tutte le sottopagine create -->
   <div id="app">
-    <Header />
-    <Discs />
+    <!-- Quando ricevo qualcosa dall'header, richiamo il metodo 'changeGengeToVisualize' -->
+    <Header @search="changeGengeToVisualize" />
+    <Discs :visualize="genreToVisualize" />
   </div>
 </template>
 
@@ -15,6 +16,17 @@ export default {
   components: {
     Header,
     Discs,
+  },
+  data: function () {
+    return {
+      genreToVisualize: "0",
+    };
+  },
+  methods: {
+    changeGengeToVisualize(resultSearch) {
+      this.genreToVisualize = resultSearch;
+      //console.log(`Risposta della ricerca: ${resultSearch}`);
+    },
   },
 };
 </script>

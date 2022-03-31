@@ -1,6 +1,11 @@
 <template>
   <main>
     <div class="container">
+      <div class="row">
+        <div class="col-12 text-white">
+          Questo è il genere che sarà visualizzato {{ visualize }}
+        </div>
+      </div>
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 py-5">
         <!-- Ciclo sulla pagina che consente di generare una singola card -->
         <SingleDisc
@@ -31,6 +36,7 @@ export default {
       discList: [],
     };
   },
+  props: ["visualize"],
   methods: {
     getApiList() {
       axios
