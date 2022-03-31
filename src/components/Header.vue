@@ -7,11 +7,11 @@
         </a>
         <div class="d-flex">
           <select class="form-select me-2" @change="getGenre">
-            <option value="0" selected>All</option>
-            <option value="1">Rock</option>
-            <option value="2">Pop</option>
-            <option value="3">Jazz</option>
-            <option value="4">Metal</option>
+            <option value="all" selected>All</option>
+            <option value="rock">Rock</option>
+            <option value="pop">Pop</option>
+            <option value="jazz">Jazz</option>
+            <option value="metal">Metal</option>
           </select>
           <button
             class="btn btn-outline-success"
@@ -31,7 +31,7 @@ export default {
   name: "IndexHeader",
   data: function () {
     return {
-      filterCard: "0", // Inizialmente visualizzo le card di tutti i generi
+      filterCard: "all", // Inizialmente visualizzo le card di tutti i generi
     };
   },
   methods: {

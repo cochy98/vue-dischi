@@ -19,7 +19,7 @@ export default {
   },
   data: function () {
     return {
-      genreToVisualize: "0",
+      genreToVisualize: "all",
     };
   },
   methods: {

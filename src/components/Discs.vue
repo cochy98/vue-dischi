@@ -2,8 +2,16 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="col-12 text-white">
+        <div class="col-6 text-white">
           Questo è il genere che sarà visualizzato {{ visualize }}
+        </div>
+        <div class="col-6">
+          <button
+            class="btn btn-primary"
+            @click="getFilteredDiscList(visualize)"
+          >
+            click
+          </button>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 py-5">
@@ -30,10 +38,15 @@ export default {
   },
   created() {
     this.getApiList();
+    //this.getFilteredDiscList(this.visualize);
+  },
+  updated() {
+    this.getFilteredDiscList(this.visualize);
   },
   data() {
     return {
       discList: [],
+      filteredDiscList: [],
     };
   },
   props: ["visualize"],
@@ -44,12 +57,25 @@ export default {
         .then((result) => {
           // handle success
           this.discList = result.data.response;
-          console.log(this.discList);
+          console.log("Recupero la lista dall'API");
         })
         .catch((error) => {
           // handle error
           console.log(error);
         });
+    },
+    getFilteredDiscList(genre) {
+      console.log("Genero l'array filtrato per genere");
+      this.filteredDiscList = [];
+      if (genre == "all") {
+        this.filteredDiscList = [...this.discList];
+      } else {
+        this.discList.forEach((element) => {
+          if (element.genre.toLowerCase() == genre) {
+            this.filteredDiscList.push(element);
+          }
+        });
+      }
     },
   },
 };
