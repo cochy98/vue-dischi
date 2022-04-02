@@ -8,10 +8,10 @@
         <div class="d-flex">
           <select class="form-select me-2" @change="getGenre">
             <option value="all" selected>All</option>
-            <option value="rock">Rock</option>
-            <option value="pop">Pop</option>
-            <option value="jazz">Jazz</option>
-            <option value="metal">Metal</option>
+            <option value="Rock">Rock</option>
+            <option value="Pop">Pop</option>
+            <option value="Jazz">Jazz</option>
+            <option value="Metal">Metal</option>
           </select>
           <button
             class="btn btn-outline-success"
@@ -39,11 +39,6 @@ export default {
     getGenre(v) {
       this.filterCard = v.target.options[v.target.options.selectedIndex].value;
     },
-    /* getGenre(v) {
-      let filterCard = v.target.options[v.target.options.selectedIndex].value;
-      console.log(filterCard);
-      return filterCard;
-    }, */
   },
 };
 </script>
