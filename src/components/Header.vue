@@ -7,11 +7,14 @@
         </a>
         <div class="d-flex">
           <select class="form-select me-2" @change="getGenre">
-            <option value="all" selected>All</option>
-            <option value="Rock">Rock</option>
-            <option value="Pop">Pop</option>
-            <option value="Jazz">Jazz</option>
-            <option value="Metal">Metal</option>
+            <option value="" selected>All</option>
+            <option
+              v-for="(genre, index) in genresList"
+              :key="index"
+              :value="genre"
+            >
+              {{ genre }}
+            </option>
           </select>
           <button
             class="btn btn-outline-success"
@@ -34,6 +37,7 @@ export default {
       filterCard: "all", // Inizialmente visualizzo le card di tutti i generi
     };
   },
+  props: ["genresList"],
   methods: {
     /* Questo metodo setta il nuovo valore per 'filterCard' */
     getGenre(v) {

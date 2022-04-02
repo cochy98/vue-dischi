@@ -2,8 +2,8 @@
   <!-- Visualizzo al'interno della mia app tutte le sottopagine create -->
   <div id="app">
     <!-- Quando ricevo qualcosa dall'header, richiamo il metodo 'changeGenreToVisualize' -->
-    <Header @search="changeGenreToVisualize" />
-    <Discs :selectedGenre="genreToVisualize" />
+    <Header :genresList="genresList" @search="changeGenreToVisualize" />
+    <Discs @loadedGenres="updateGenresList" :selectedGenre="genreToVisualize" />
   </div>
 </template>
 
@@ -19,10 +19,14 @@ export default {
   },
   data: function () {
     return {
-      genreToVisualize: "all",
+      genresList: [],
+      genreToVisualize: "",
     };
   },
   methods: {
+    updateGenresList(genresList) {
+      this.genresList = genresList;
+    },
     changeGenreToVisualize(resultSearch) {
       this.genreToVisualize = resultSearch;
     },

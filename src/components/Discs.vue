@@ -30,12 +30,13 @@ export default {
   data() {
     return {
       discList: [],
+      genresList: [],
     };
   },
   props: ["selectedGenre"],
   computed: {
     filteredDiscList() {
-      if (this.selectedGenre === "all") {
+      if (this.selectedGenre === "") {
         return this.discList;
       }
       return this.discList.filter(
@@ -51,6 +52,13 @@ export default {
           // handle success
           this.discList = result.data.response;
           console.log("Recupero la lista dall'API");
+          this.discList.forEach((discElement) => {
+            if (!this.genresList.includes(discElement.genre)) {
+              this.genresList.push(discElement.genre);
+            }
+          });
+
+          this.$emit("loadedGenres", this.genresList);
         })
         .catch((error) => {
           // handle error
